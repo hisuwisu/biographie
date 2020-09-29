@@ -1,6 +1,5 @@
 # biographie
 
-## Autor hisuwisu
 
 
 demo 
