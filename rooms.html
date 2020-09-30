@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Vue.js</title>
+  <!-- Vue.js -->
+  <script src="vue.min.js"></script>
+  
+  
+  <script>
+    window.addEventListener("DOMContentLoaded", function() {
+  
+      if (document.getElementById("format")) {
+  
+        let el = document.getElementById("format");
+        let sel = el.querySelectorAll("code[id]");
+        sel.forEach(function(el) {
+          document.getElementById(el.id).addEventListener("click", selectText);
+        });
+  
+      }
+  
+    });
+  
+    function selectText(event) {
+      var s = window.getSelection();
+      var r = document.createRange();
+      r.selectNodeContents(event.target);
+      s.removeAllRanges();
+      s.addRange(r);
+    }
+  </script>
+  
+  <style>
+    code {
+      background-color: #00000;
+    }
+  </style>
+  <style>
+  .rainbow-text {
+  animation-duration: 3.115s;
+  }
+  .rainbow-text {
+  background: linear-gradient(53.13deg,#ffd33d 0,#fb8532 16.02%,#ea4a5a 28.06%,#8a63d2 56.92%,#2188ff 72.93%,#34d058 84%,#ffd33d 100%);
+  background-size: auto;
+  background-clip: border-box;
+  background-clip: text;
+  display: inline-block;
+  color: transparent;
+  text-fill-color: transparent;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shine 6.28s alternate infinite;
+  animation-duration: 6.28s;
+  background-size: 300%;
+  }
+  @keyframes shine {
+  0% {
+  background-position:200% center
+  }
+  62.8% {
+  background-position:100% center
+  }
+  100% {
+  background-position:200% center
+  }
+  }
+  
+  .text {font-family: Times New Roman;
+    font-size: 34px;
+    background-color: #000;
+    writing-mode: tb-rl;
+    white-space: nowrap;
+    filter: flipv fliph;
+    padding:5px}
+  </style>
+</head>
+
+<body contentEditable="true">>
+
+
+
+
+<script>
+  function bearbeiten() {
+    if (document.getElementById("BUTTON").value == "Reihenfolge ändern") {
+      document.getElementById("BUTTON").value = "Reihenfolge jetzt ändern";
+      void(document.getElementById("ID").contentEditable = true);
+    }
+    else {
+      document.getElementById("BUTTON").value = "Reihenfolge ändern";
+      void(document.getElementById("ID").contentEditable = false);
+    }
+  }
+</script>
+
+<style>
+  div.beispiel {
+    counter-reset: platz;
+  }
+
+  div.beispiel p {
+    counter-increment: platz;
+  }
+
+  div.beispiel p::before {
+    content: counter(platz) ". ";
+    color: Blue;
+  }
+</style>
+...
+<div class="beispiel">
+  <p> David Brittain </p>
+  <p> Ruslan Belkin </p>
+  <p> Mohomodou Houssouba </p>
+  <p> Shuichiro Inomata </p>
+  <p> Margaret Melton </p>
+</div>
+<div id="ID" style="background-color: #FFFFEA; width: 300px; padding: 10px;">
+  <img src="wuerfel/w3.gif">
+  <img src="wuerfel/w1.gif">
+  <img src="wuerfel/w2.gif">
+  <img src="wuerfel/w6.gif">
+  <img src="wuerfel/w5.gif">
+  <img src="wuerfel/w4.gif">
+</div>
+<br>
+<input type="button" id="BUTTON" value="Reihenfolge ändern" onClick="bearbeiten()">
+  
+  <script>
+    // Ausgabe des aktuellen Datums mit Monats- und Tagesnamen
+  
+    var W = new Array('So', 'Mo', 'Di', 'Mi', 'Do', 'Fr', 'Sa', 'So'),
+      H = new Date(),
+      E = new Array("Januar", "Februar", "März", "April", "Mai", "Juni",
+        "Juli", "August", "September", "Oktober", "November", "Dezember");
+    document.write(W[H.getDay()] + "., " + H.getDate() + ". " + E[H.getMonth()] + " " + H.getFullYear())
+  </script>
+  
+  <script>
+    // Ausgabe zeitlich steuern
+  
+    function jetzt() {
+      var Heute = new Date();
+      if (Heute.getSeconds() == 0) {
+        document.getElementById("anzeige").innerHTML = "Text";
+      }
+      if (Heute.getSeconds() == 10) {
+        document.getElementById("anzeige").innerHTML = "Text 2";
+      }
+      if (Heute.getSeconds() == 17) {
+        document.getElementById("anzeige").innerHTML = "Text 3";
+      }
+      // ... Und so weiter ...
+    }
+  
+    setInterval('jetzt()', 1000);
+  </script>
+  <div id="anzeige"></div>
+  
+ <fieldset id="vue-app" >
+   <legend  class="rainbow-text"><h1 >{{heading}}</h1>
+      <p>{{text}}</p>
+      <span>{{legends}}</span>
+
+      <p id="format">
+        Weit hinten, hinter den Wortbergen, fern der Länder Vokalien und Konsonantien leben die Blindtexte.
+        Abgeschieden wohnen Sie in <code id="eins">Buchstabhausen an der Küste des Semantik</code>, eines großen Sprachozeans.
+        Ein kleines Bächlein namens Duden fließt durch ihren Ort und versorgt sie mit den nötigen Regelialien.
+        Es ist ein paradiesmatisches Land, in dem einem <code id="zwei">gebratene Satzteile in den Mund</code> fliegen.
+        Nicht einmal von der allmächtigen Interpunktion werden die Blindtexte beherrscht - <code id="drei">ein geradezu unorthographisches Leben</code>.
+        Eines Tages aber beschloß eine kleine Zeile Blindtext, <code id="vier">ihr Name war Lorem Ipsum</code>, hinaus zu gehen in die weite Grammatik.
+        Der große Oxmox riet ihr davon ab, da es dort wimmele von bösen Kommata, wilden Fragezeichen und hinterhältigen Semikoli,
+        doch das Blindtextchen ließ sich nicht beirren. <code id="fuenf">Es packte seine sieben Versalien, schob sich sein Initial in den Gürtel und machte sich auf den Weg</code> ...
+      </p><div id="foo"></div>
+      <script>
+        var counter = (function() {
+          var count = function(i) {
+            document.querySelector("#foo").innerHTML = i;
+            if (i > 0) {
+              setTimeout(function() { count(i - 1); }, 1000)
+            }
+          };
+          return count;
+        })();
+      
+        counter(500);
+      </script>
+      
+      <script>
+        function htmlEntities(str) {
+          return String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+        }
+        
+        
+      </script>
+      
+      <script>
+        // Trim-Funktion in JavaScript
+      
+        function trim(str) {
+          return (str.replace("\s+$", "").replace("^\s+", ""));
+        }
+      </script>
+        
+      <textarea class="rainbow-text"  id="input">Die Textauswahl in Zwischenablage kopieren.</textarea>
+      <button id="copy-button">Kopieren</button>
+      <script>
+        // Die Textauswahl in Zwischenablage kopieren
+      
+        var input = document.getElementById("input");
+        var button = document.getElementById("copy-button");
+      
+        button.addEventListener("click", function(event) {
+          event.preventDefault();
+          input.select();
+          document.execCommand("copy");
+        });
+      </script>
+      
+      
+      <script>
+        // 'https' und den Querystring aus der URL entfernen
+      
+        let url = window.location.hostname;
+        url = url.replace(/^(?:https?:\/\/)?(?:www\.)?/i, "").split('/')[0];
+        console.log(url);
+      </script>
+      
+      
+      <p>
+        <textarea class="rainbow-text" id="text" rows="3" cols="35">AAAA <br><br><br> CCCCC</textarea><br>
+        <input type="button" value="HTML-Tags umwandeln" onClick="HtmlUmwandeln()">
+      </p>
+      <script>
+        function HtmlUmwandeln() {
+          if (document.getSelection) {
+            var a = "";
+            var b = "";
+            var c = "";
+            var num = 0;
+            var field = document.getElementById("text");
+            var startPos = field.selectionStart;
+            var endPos = field.selectionEnd;
+            a = field.value.substring(startPos, endPos);
+            if (a != "") {
+              code();
+            }
+            else {
+              alert("Bitte zuerst den HTML-Quelltext markieren!");
+            }
+      
+            function code() {
+              c = a.charAt(num);
+              if (c == "<") { c = "&lt;" }
+              if (c == ">") { c = "&gt;" }
+              b = b + c;
+              num++;
+              if (num != a.length) {
+                code();
+              }
+              else {
+                field.value = field.value.substring(0, startPos) + b +
+                  field.value.substring(endPos, field.length);
+              }
+            }
+          }
+        }
+      </script>
+      
+      <script>
+        // Leerstellen löschen
+      
+        function deleteSpaces(string) {
+          var temp = "";
+          string = '' + string;
+          var splitstring = string.split(" ");
+          for (var i = 0; i < splitstring.length; i++) {
+            temp += splitstring[i];
+          }
+          return temp;
+        }
+      </script>
+      <input type="text" size="25" onBlur="this.value=deleteSpaces(this.value);">
+      
+      
+      
+      <script>
+        // Letzte Änderung
+        var modDate = document.lastModified
+        var Tag = modDate.slice(3, 5);
+        var Monat = modDate.slice(0, 2);
+        var Jahr = modDate.slice(6, 10);
+        modDate = "Letzte Änderung am " + Tag + "." + Monat + "." + Jahr;
+        document.write(modDate);
+      </script>
+      
+      
+      
+      <script>
+        // Markierten Text in ein Eingabefeld einfügen
+      
+        function markierterText() {
+          if (window.getSelection) {
+            document.getElementById("auswahl").value = window.getSelection();
+          } else if (document.getSelection) {
+            document.getElementById("auswahl").value = document.getSelection();
+          } else if (document.selection) {
+            document.getElementById("auswahl").value = document.selection.createRange().text;
+          }
+        }
+      </script>
+      <p>
+        <em>Viel Text um dieses Beispiel zu demonstrieren.</em><br>
+        <input type="text" id="auswahl" size="45">
+        <input type="button" value="Markierten Text einfügen" onClick="markierterText();">
+      </p>
+      <span class="text">
+        <span class="rainbow-text">
+          <input type=button value="Meldung ohne Format" onClick="alert('Die Meldung: Dieser Text dient nur zur Demonstration. Seine Funktion ist beschränkt')">
+          <input type=button value="Meldung mit Format" onClick="alert(' \t Die Meldung: \n Dieser Text dient nur zum Demo. \n Seine Funktion ist beschränkt')">
+          <span>&#35;</span>
+          <span>&#33;</span>
+          <span>&#34;</span>
+          
+          <p>
+            <input type="range" min="1" max="5" value="1" step="1" onchange="showValue(this.value)">
+          </p>
+          <p>
+            <img src="1.jpg" id="range" alt=""><br>
+            <span id="number">1</span>
+          </p>
+          <script>
+            function showValue(newValue) {
+              var bild = "1.jpg";
+              switch (newValue) {
+                case '1':
+                  bild = '1.jpg';
+                  break;
+                case '2':
+                  bild = '2.jpg';
+                  break;
+                case '3':
+                  bild = '3.jpg';
+                  break;
+                case '4':
+                  bild = '4.jpg';
+                  break;
+                case '5':
+                  bild = '5.jpg';
+                  break;
+              }
+              document.getElementById("range").src = bild;
+              document.getElementById("number").innerText = newValue;
+            }
+          </script>
+          
+          
+          <script>
+            // Suchen und Ersetzen
+          
+            var a = "Norbert-Zenk.de";
+            a = a.replace(/Norbert/gi, "Werner");
+            alert(a);
+          
+            // Ausgabe: Werner-zenk.de
+          </script>
+          : (keine Angabe!) sucht bis zur ersten gefundenen Übereinstimmung
+          g: Globale Suche
+          i: Ignoriert Groß-und Kleinschreibung
+          gi: Kombination aus g und i
+          Aus der "Giftküche"
+          // HTML-Tags entfernen
+          a.replace(/<[^>]+>/g, '');
+            // BB-Code entfernen
+            a..replace(/\[[^\]]+\]/g, '');
+            // Die Tilde (~) durch einen Zeilenumbruch ersetzen
+            a.replace(new RegExp('~', 'g'), "\r\n");
+        </span>
+      </span>
+      
+      
+      Noch <span id="sec" style="font-weight: bold;"></span> Sekunden.
+      <script>
+        // Sekundenzähler
+      
+        function Timer(s) {
+          document.getElementById("sec").innerHTML = s;
+          s--;
+          if (s > 0) { // Sekunden (Endwert)
+            window.setTimeout('Timer(' + s + ')', 999);
+          }
+        }
+      
+        Timer(500); // Sekunden (Startwert)
+      </script>
+      
+      
+      <script>
+        // Text bei onMouseOver und onMouseOut ersetzen
+      
+        function replaceit(id, text) {
+          var obj = document.getElementById(id).firstChild;
+          obj.nodeValue = text;
+        }
+      </script>
+      <span id="text" onMouseOver="replaceit(this.id,'Die Maus ist darüber')" onMouseOut="replaceit(this.id,'und weg ist die Maus.')">Maus!</span>
+   </legend>
+ </fieldset>
+ 
+  
+  <!-- Project -->
+  <script src="app.js"></script>
+</body>
+
+</html>
