@@ -1,0 +1,39 @@
+
+    html,
+    body,
+    h1,
+    h2,
+    h3,
+    h4,
+    h5 {
+      font-family: "Raleway", sans-serif 
+      
+    } 
+    
+    
+
+div.beispiel {
+ counter-reset: platz;
+}
+
+div.beispiel p {
+ counter-increment: platz;
+}
+
+div.beispiel p::before {
+ content: counter(platz) ". ";
+ color: Blue;
+}
+
+div.w4 p::before {
+ content: "Platz " counter(platz) ": ";
+ color: Gold;
+ font-weight: Bold;
+}
+
+span {
+ font-size:100px;
+}
+
+.svgbg {width:100%; height:auto;background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 44' height='44' width='100'%3E%3Cpath d='m 0,5.5 100,0' style='stroke:%23f5f5f5;stroke-width:11px' /%3E%3Cpath d='m 0,38.5 100,0' style='stroke:%23f5f5f5;stroke-width:11px' /%3E%3C/svg%3E");}
+   
